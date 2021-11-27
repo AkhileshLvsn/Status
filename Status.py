@@ -10,7 +10,8 @@ inp_img = cv2.blur(inp_img, (4, 4))
 gray_inp_img = cv2.cvtColor(inp_img, cv2.COLOR_BGR2GRAY)
 
 
-old_pts = np.array([[350, 180], [350, 350]], dtype=np.float32).reshape(-1, 1, 2)
+old_pts = np.array([[350, 180], [350, 350]],
+                   dtype=np.float32).reshape(-1, 1, 2)
 
 backup = old_pts.copy()
 backup_img = gray_inp_img.copy()
@@ -62,9 +63,6 @@ while True:
             ytest_pos += 40
             cv2.putText(outp, "gone at {}".format(datetime.datetime.now().strftime("%H:%M")), (10, ytest_pos),
                         cv2.FONT_HERSHEY_PLAIN, 3, (0, 255, 0))
-
-
-
 
     elif new_pts.ravel()[0] < 200 or new_pts.ravel()[2] < 200:
         if new_pts.ravel()[0] < 50 or new_pts.ravel()[2] < 50:
